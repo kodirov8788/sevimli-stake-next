@@ -1,0 +1,7 @@
+.main__banner {
+}
+@media screen and (max-width: 768px) {
+  .main__banner {
+    margin-top: 70px;
+  }
+}

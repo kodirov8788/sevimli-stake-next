@@ -3,20 +3,32 @@ import Link from "next/link";
 import { BiChevronLeftCircle } from "react-icons/bi";
 import { DataContext } from "../../store/GlobalState";
 import { getServerSideProps } from "../../pages/index"
+import ProductItem from "../../components/product/ProductItem";
+
 
 const FastFood = (props) => {
   const { state, dispatch } = useContext(DataContext);
   const { auth, categories } = state;
-  const [product] = useState(props.products);
+  const [products, setProducts] = useState(props.products);
   const [filteredPr, setFilterdPr] = useState([]);
   // console.log("product >>>", product);
   console.log("categories >>>", categories);
   console.log("filteredPr >>>", filteredPr);
-
   useEffect(() => {
-    const pr = product.filter(item => item.category === "61db1c16ccde48158ce7e877")
+    setProducts(props.products);
+  }, [props.products]);
+
+
+  const handleCheck = (id) => {
+    products.forEach((product) => {
+      if (product._id === id) product.checked = !product.checked;
+    });
+    setProducts([...products]);
+  };
+  useEffect(() => {
+    const pr = products.filter(item => item.category === "61db1c16ccde48158ce7e877")
     setFilterdPr(pr)
-  }, [product])
+  }, [products])
   return (
     <div className="about__container">
       <li>
@@ -27,12 +39,17 @@ const FastFood = (props) => {
           </a>
         </Link>
       </li>
-      {filteredPr.map(product => (
-        <div className="" style={{ display: "flex" }}>
-          <img src={product.images[0].url} style={{ width: "100px" }} alt="" />
-          <h1>{product.title}</h1>
-        </div>
-      ))}
+      {filteredPr.length === 0 ? (
+        <h2>No Products</h2>
+      ) : (
+        filteredPr.map((product) => (
+          <ProductItem
+            key={product._id}
+            product={product}
+            handleCheck={handleCheck}
+          />
+        ))
+      )}
     </div>
   );
 };

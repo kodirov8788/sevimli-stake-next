@@ -146,8 +146,8 @@ function NavBar() {
 					</div>
 				</div>
 			</nav>
-			<LanguageSelect />
-			<MediaLanguageSelect />
+			{/* <LanguageSelect />
+			<MediaLanguageSelect /> */}
 		</>
 	);
 }

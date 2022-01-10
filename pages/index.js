@@ -19,7 +19,7 @@ const Home = (props) => {
   // console.log("categories", categories);
   // console.log("products", products);
 
-  const { locale } = router;
+  const { locale, pathname } = router;
   const t = locale === "en" ? en : uz;
 
 
@@ -61,6 +61,7 @@ const Home = (props) => {
       <Head>
         <title>Home Page</title>
       </Head>
+      <button onClick={() => router.push({ pathname: '/products/cakes' })}>Products cakes</button>
 
       {auth.user && auth.user.role === "admin" && (
         <div

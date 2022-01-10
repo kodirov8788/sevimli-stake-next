@@ -4,18 +4,18 @@ import { decrease, increase } from "../store/Actions";
 
 const CartItem = ({ item, dispatch, cart }) => {
   return (
-    <tr>
-      <td style={{ width: "100px", overflow: "hidden", border: "none" }}>
+    <div>
+      <li style={{ listStyle: "none", width: "100px", overflow: "hidden", border: "none" }}>
         <img
           src={item.images[0].url}
           alt={item.images[0].url}
           className="img-thumbnail w-100"
           style={{ minWidth: "80px", height: "80px" }}
         />
-      </td>
+      </li>
 
-      <td
-        style={{ minWidth: "100px", border: "none" }}
+      <li
+        style={{ listStyle: "none", minWidth: "100px", border: "none" }}
         className="w-50 align-middle mt-20"
       >
         <h5 className="text-capitalize text-secondary">
@@ -30,11 +30,12 @@ const CartItem = ({ item, dispatch, cart }) => {
         ) : (
           <p className="mb-1 text-danger">Out Stock</p>
         )}
-      </td>
+      </li>
 
-      <td
+      <li
         className="cartItem__btns"
         style={{
+          listStyle: "none",
           border: "none",
         }}
       >
@@ -57,9 +58,9 @@ const CartItem = ({ item, dispatch, cart }) => {
           {" "}
           +{" "}
         </button>
-      </td>
+      </li>
 
-      <td style={{ minWidth: "50px", cursor: "pointer", border: "none" }}>
+      <li style={{ listStyle: "none", minWidth: "50px", cursor: "pointer", border: "none" }}>
         <i
           className="far fa-trash-alt text-danger"
           aria-hidden="true"
@@ -80,8 +81,8 @@ const CartItem = ({ item, dispatch, cart }) => {
             })
           }
         ></i>
-      </td>
-    </tr>
+      </li>
+    </div>
   );
 };
 

@@ -70,13 +70,7 @@ const CartChange = () => {
     }
   }, [callback]);
 
-  const handlePayment = async () => {
-    // if (!address || !mobile)
-    //   return dispatch({
-    //     type: "NOTIFY",
-    //     payload: { error: t.cart_mobile_address },
-    //   });
-
+  const handleOrder = async () => {
     let newCart = [];
     for (const item of cart) {
       const res = await getData(`product/${item._id}`);
@@ -126,16 +120,16 @@ const CartChange = () => {
     );
 
   return (
-    <div className="row mx-auto">
+    <div className="">
       <Head>
         <title>{t.cart_page}</title>
       </Head>
 
-      <div className="col-md-8 text-secondary table-responsive my-3">
+      <div className="">
         <h2>{t.shopping__cart}</h2>
 
-        <table className="table my-3 ">
-          <tbody>
+        <div className="">
+          <div>
             {cart.map((item) => (
               <CartItem
                 key={item._id}
@@ -144,41 +138,17 @@ const CartChange = () => {
                 cart={cart}
               />
             ))}
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
 
-      <div className="col-md-4 my-3 text-right text-secondary">
-        {/* <form>
-          <h2>{t.shipping}</h2>
-
-          <label htmlFor="address">{t.address}</label>
-          <input
-            type="text"
-            name="address"
-            id="address"
-            className="form-control mb-2"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-
-          <label htmlFor="mobile">{t.mobile}</label>
-          <input
-            type="text"
-            name="mobile"
-            id="mobile"
-            className="form-control mb-2"
-            value={mobile}
-            onChange={(e) => setMobile(e.target.value)}
-          />
-        </form> */}
-
+      <div className="text-[#000]">
         <h3>
-          {t.total}: <span className="text-danger">${total}</span>
+          {t.total}: <span className="">${total}</span>
         </h3>
 
         <Link href={auth.user ? "#!" : "/signin"}>
-          <a className="btn btn-dark my-2" onClick={handlePayment}>
+          <a className="btn btn-dark " onClick={handleOrder}>
             {t.cart__order}
           </a>
         </Link>

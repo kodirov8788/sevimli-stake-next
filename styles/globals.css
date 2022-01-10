@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --main-color: #f3ad45;
   --main-transition: all 0.255s ease-out;

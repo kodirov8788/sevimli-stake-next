@@ -12,7 +12,7 @@ function Layout({ children }) {
   const [route, setRoute] = useState(false);
   const router = useRouter();
   useEffect(() => {
-    if (router.pathname.includes("about")) {
+    if (router.pathname.includes("products")) {
       setRoute(true);
     } else {
       setRoute(false);
@@ -25,8 +25,8 @@ function Layout({ children }) {
       <NavBar />
       <Notify />
       <Modal />
-      {/* {route && <AboutSidebar />} */}
-      <AboutSidebar />
+      {route && <AboutSidebar />}
+      {/* <AboutSidebar /> */}
       {/* <LanguageSelect /> */}
       <CartChange />
       {children}
